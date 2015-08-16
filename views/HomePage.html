@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="table.css">
+  <script src="jquery/dist/jquery.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <table>
+      <thead class="odd">
+        <th data-name = 'name'>姓名</th>
+        <th data-name = 'number'>学号</th>
+        <th data-name = 'Chinese' data-flag='true'>语文</th>
+        <th data-name = 'math' data-flag='true'>数学</th>
+        <th data-name = 'English' data-flag='true'>英语</th>
+      </thead>
+      <tbody>
+        {{#each entries}}
+        <tr name="score">
+          <td class='name'>{{name}}</td>
+          <td class='number'>{{number}}</td>
+          <td class='Chinese'>{{Chinese}}</td>
+          <td class='math'>{{math}}</td>
+          <td class='English'>{{English}}</td>
+          <td><button type="button" name="button" class="delete">删除</button></td>
+          <td><button type="button" name="button" class="update">修改</button></td>
+        </tr>
+        {{/each}}
+      </tbody>
+</body>
+    <script src="response.js" charset="utf-8"></script>
+</html>

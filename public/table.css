@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+table {
+	margin: auto;
+	width:980px;
+	background-color: #f5f5f5;
+	text-align: center;
+	border-collapse: collapse;
+}
+/*table td{
+	color:red;
+}
+td{
+	color:green;
+}*/
+/*table,tr,td {
+	border:1px solid;
+	border-bottom-color: #ff0000;
+	border-bottom-width: 1px;
+}*/
+
+/*.odd {
+	background-color: #ddd;
+}*/
+tbody th:nth-child(even) {
+  background-color: #f5f5f5;
+}
