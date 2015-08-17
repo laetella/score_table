@@ -29,28 +29,47 @@ function updateData(result) {
 $('.delete').on('click',function() {
   if(confirm("Are you sure to delete this student and his scores?")) {
     var deleteId = $(this).parent().siblings('.number').html();
-    console.log(deleteId);
     $.ajax({
-      type : 'post',
-      url : '/scores/delete',
-      data : deleteId,
+      type : 'delete',
+      url : '/scores/delete?deleteId='+deleteId,
       success : function (resp) {
-        console.log(resp + 'I am successful.');
+        $(this).remove();
       },
       error : function (XMLHttpRequest, textStatus, errorThrown) {
-        console.log('failed.');
+        console.log(deleteId+'failed.');
       }
     });
+
   }
 });
 
-$('.update').on('click', function () {
-  var updateId = $(this).parent().siblings('.number').html();
-  console.log(updateId);
+// $('.update').on('click', function () {
+//   var updateId = $(this).parent().siblings('.number').html();
+//   console.log(updateId);
+//   $.ajax({
+//     type : 'post',
+//     url : '/scores/update?updateId='+updateId,
+//     success : function (resp) {
+//       console.log(resp + 'I am successful.');
+//     },
+//     error : function (XMLHttpRequest, textStatus, errorThrown) {
+//       console.log('failed.');
+//     }
+//   });
+//   window.open('updateData.html');
+// });
+
+$('.add').on('click', function () {
+  // console.log($('#name').val());
   $.ajax({
     type : 'post',
-    url : '/scores/update',
-    data : updateId,
+    url : '/scores/add',
+    data : {
+      addName : $('#name').val(),
+      addChinese : $('#Chinese').val(),
+      addMath : $('#math').val(),
+      addEnglish : $('#English').val()
+    },
     success : function (resp) {
       console.log(resp + 'I am successful.');
     },
@@ -58,5 +77,4 @@ $('.update').on('click', function () {
       console.log('failed.');
     }
   });
-  window.open('updateData.html');
 });

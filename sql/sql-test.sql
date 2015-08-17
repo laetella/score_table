@@ -22,7 +22,7 @@ create table score (
 );
 
 insert into student(stu_id, stu_name,stu_class)
-            values (0004,   'aa',    01),
+            values (0001,   'aa',    01),
                    (0002,   'bb',    01),
                    (0003,   'cc',    01);
 
@@ -52,15 +52,15 @@ create table student (
 drop table if exists course;
 create table course (
   course_id int primary key auto_increment,
-  course_name varchar(20) not null
+  course_name int not null
 );
 
 drop table if exists score;
 create table score (
   score_id int primary key auto_increment,
-  stu_id varchar(20) not null,
+  stu_id int not null,
   course_id varchar(20) not null,
-  score int(4),
+  score int,
   foreign key (stu_id) references student(stu_id) on delete cascade,
   foreign key (course_id) references course(course_id) on delete cascade
 );
@@ -74,5 +74,23 @@ begin
   delete from score where this.stu_id=student.stu_id;
 end$
 delimiter ;
+
 select stu_name, course_name, score from student , course, score
   where student.stu_id = score.stu_id and course.course_id = score.course_id;
+
+drop view if exists stu_cor_score;
+create view stu_cor_score as
+select stu_name, student.stu_id,course_name, score from student , course, score
+  where student.stu_id = score.stu_id and course.course_id = score.course_id;
+
+drop view if exists student_course;
+create view student_course as
+  select stu_name as stu_name,
+        stu_id as stu_id,
+   sum(if(course_name = 'Chinese',score,0)) as Chinese,
+   sum(if(course_name = 'math',score,0)) as math,
+   sum(if(course_name = 'English',score,0)) as English
+  from stu_cor_score
+  group by stu_name;
+
+select * from student_course;

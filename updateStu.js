@@ -8,9 +8,9 @@ var mysql      = require('mysql');
 
   connection.connect();
   function updateStu (deleteId) {
-    console.log("I am in delStu");
+    console.log("I am in updateStu");
     var updateSql = 'delete from student where stu_id =' + deleteId;
-    connection.update(updateSql, function(err, rows, fields) {
+    connection.query(updateSql, function(err, rows, fields) {
       if (err) throw err;
       console.log(rows);
     });

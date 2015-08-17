@@ -10,7 +10,8 @@ var mysql      = require('mysql');
   function delStu (deleteId) {
     console.log("I am in delStu");
     var deleteSql = 'delete from student where stu_id =' + deleteId;
-    connection.delete(deleteSql, function(err, rows, fields) {
+    connection.query(deleteSql, function(err, rows, fields) {
+      console.log(deleteSql);
       if (err) throw err;
       console.log(rows);
     });

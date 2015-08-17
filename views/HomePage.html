@@ -20,8 +20,8 @@
       <tbody>
         {{#each entries}}
         <tr name="score">
-          <td class='name'>{{name}}</td>
-          <td class='number'>{{number}}</td>
+          <td class='name'>{{stu_name}}</td>
+          <td class='number'>{{stu_id}}</td>
           <td class='Chinese'>{{Chinese}}</td>
           <td class='math'>{{math}}</td>
           <td class='English'>{{English}}</td>
@@ -30,6 +30,28 @@
         </tr>
         {{/each}}
       </tbody>
+    </table>
+    <a href="addData.html">tian</a>
+    <br> <br>
+      <table>
+        <tr>
+         <td align="right">姓名：</td>
+         <td><input type="text" id="name"></td>
+        </tr>
+        <tr>
+         <td align="right">语文成绩：</td>
+         <td><input type="text" id="Chinese"></td>
+        </tr>
+        <tr>
+         <td align="right">数学成绩：</td>
+         <td><input type="text" id="math"></td>
+        </tr>
+        <tr>
+         <td align="right">英语成绩：</td>
+         <td><input type="text" id="English"></td>
+        </tr>
+      </table>
+      <input type="button" name="name" value="添加" class="add">
 </body>
     <script src="response.js" charset="utf-8"></script>
 </html>
